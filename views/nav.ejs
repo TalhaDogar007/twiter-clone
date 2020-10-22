@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+  <nav class="navbar navbar-toggleable-md fixed-top">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+      data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse container">
+      <!-- Navbar navigation links -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/"><i class="octicon octicon-home" aria-hidden="true"></i> Home <span
+              class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><i class="octicon octicon-zap"></i> Moments</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><i class="octicon octicon-bell"></i> Notifications</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><i class="octicon octicon-inbox"></i> Messages</a>
+        </li>
+      </ul>
+      <!-- END: Navbar navigation links -->
+      <!-- Navbar Search form -->
+      <form class="navbar-form" role="search">
+        <div class="input-group">
+          <input type="text" class="form-control input-search" placeholder="Search Twitter" name="srch-term"
+            id="srch-term">
+          <div class="input-group-btn">
+            <button class="btn btn-default btn-search" type="submit"><i
+                class="octicon octicon-search navbar-search-icon"></i></button>
+          </div>
+        </div>
+      </form>
+      <!-- END: Navbar Search form -->
+      <!-- Navbar User menu -->
+      <div class="dropdown navbar-user-dropdown">
+        <button class="btn btn-secondary dropdown-toggle btn-circle" type="button" id="dropdownMenuButton"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </div>
+      <!-- END: Navbar User menu -->
+      <!-- Navbar Tweet button -->
+      <!-- <a class="btn btn-search-bar" type="submit" href="/">
+        Tweet
+      </a> -->
+      <button class="btn btn-search-bar" id="myBtn">Tweet</button>
+
+      <!-- The Modal -->
+      
+      <form method="POST" class="register-form" id="login-form">
+        <div id="myModal" class="modal">
+
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close">&times;</span>    
+            <textarea   name="tweet[]" class="postinput" required></textarea>
+            
+            <div class="form-group form-button">
+              <input formaction="/tweet" type="submit" name="signin" id="signin" class="form-submit" value="POST"/>
+            </div>
+   
+          </div>
+          
+        </div>
+       
+    </form>
+
+   
+
+
+
+      
+      <% if ((typeof login_info != "undefined" ? login_info : "")) { %>
+        <a class="btn btn-search-bar" type="submit" href="/auth/signup">
+          Signup
+        </a>
+        <a class="btn btn-search-bar" type="submit" href="/auth/login">
+          Login
+        </a>
+        <%} 
+        else { %>
+          <a class="btn btn-search-bar" type="submit" href="/auth/logout">
+            Logout
+          </a>        <% } %>
+      
+
+    </div>
+  </nav>
+  <!-- END: Fixed top navbar -->
+  <div class="main-container">
+    <!-- Profile background large image -->
+
+    <div class="row profile-background">
+      <img class="backgroundimg" src="https://source.unsplash.com/user/erondu/874x320" alt="">
+
+      <div class="container">
+        <!-- User main avatar -->
+
+        <div class="avatar-container">
+
+          <img class="avatar" src="https://source.unsplash.com/user/erondu" alt="">
+
+
+        </div>
+      </div>
+    </div>
+
+    <nav class="navbar profile-stats">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+
+          </div>
+          <div class="col-6">
+
+            <ul>
+              <li class="profile-stats-item-active">
+                <a type="submit" href="/tweet">
+                  <span class="profile-stats-item profile-stats-item-label" >Tweets</span>
+                  <span class="profile-stats-item profile-stats-item-number">51</span>
+                </a>
+              </li>
+              <li>
+                <a>
+                  <span class="profile-stats-item profile-stats-item-label">Following</span>
+                  <span class="profile-stats-item profile-stats-item-number">420</span>
+                </a>
+              </li>
+              <li>
+                <a>
+                  <span class="profile-stats-item profile-stats-item-label">Followers</span>
+                  <span class="profile-stats-item profile-stats-item-number">583</span>
+                </a>
+              </li>
+              <li>
+                <a>
+                  <span class="profile-stats-item profile-stats-item-label">Likes</span>
+                  <span class="profile-stats-item profile-stats-item-number">241</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col">
+
+          </div>
+        </div>
+      </div>
+    </nav>
+     
+    <script src='https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js'></script>
+     
+    <script>
+      // Get the modal
+      var modal = document.getElementById("myModal");
+
+      // Get the button that opens the modal
+      var btn = document.getElementById("myBtn");
+
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+
+      // When the user clicks the button, open the modal 
+      btn.onclick = function () {
+        modal.style.display = "block";
+      }
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function () {
+        modal.style.display = "none";
+      }
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+    </script>
+
+   
+    
+    
+  
+</html>

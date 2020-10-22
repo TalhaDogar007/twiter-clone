@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Twitter 
+     
+  </title>
+
+
+  <link rel='stylesheet prefetch'
+    href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css'>
+  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/octicons/4.4.0/font/octicons.min.css'>
+  <!-- Main css -->
+  <link rel="stylesheet" href="/style.css">
+ 
+</head>
+
+<body>
+  <h2  ><%= (typeof error != "undefined" ? error : "") %></h2>
+  <%- include('nav'); -%>
+    <div class="container main-content">
+      <div class="row">
+        <div class="col profile-col">
+          <!-- Left column -->
+
+          <div class="profile-header">
+            <!-- Header information -->
+            <h3 class="profile-fullname"><a>Jon Vadillo<a></h3>
+            <h2 class="profile-element"><a>@jonvadillo</a></h2>
+            <a class="profile-element profile-website" hrerf=""><i
+                class="octicon octicon-link"></i>&nbsp;jonvadillo.com</a>
+            <a class="profile-element profile-website" hrerf=""><i
+                class="octicon octicon-location"></i>&nbsp;Vitoria-Gasteiz, Spain</a>
+            <h2 class="profile-element"><i class="octicon octicon-calendar"></i>Joined November 2012</h2>
+            <button class="btn btn-search-bar tweet-to-btn">Tweet to Jon Vadillo</button>
+            <a class="profile-element profile-website" hrerf=""><i class="octicon octicon-file-media"></i>1,142 Photos
+              and videos</a>
+            <div class="pic-grid">
+              <!-- Image grid -->
+              <div class="row">
+                <div class="col pic-col"><img src="https://pbs.twimg.com/media/DFCq7iTXkAADXE-.jpg:thumb" height="73px"
+                    class=""></div>
+                <div class="col pic-col"><img src="https://pbs.twimg.com/media/DEoQ0vyXoBA1cwQ.png:thumb" height="73px"
+                    class=""></div>
+                <div class="col pic-col"><img src="https://pbs.twimg.com/media/DDVbW4RXsAAasuw.jpg:thumb" height="73px"
+                    class=""></div>
+              </div>
+              <!-- End: row -->
+              <div class="row">
+                <div class="col pic-col"><img src="https://pbs.twimg.com/media/DFCq7iTXkAADXE-.jpg:thumb" height="73px"
+                    class=""></div>
+                <div class="col pic-col"><img src="https://pbs.twimg.com/media/DEoQ0vyXoBA1cwQ.png:thumb" height="73px"
+                    class=""></div>
+                <div class="col pic-col"><img src="https://pbs.twimg.com/media/DDVbW4RXsAAasuw.jpg:thumb" height="73px"
+                    class=""></div>
+              </div>
+              <!-- End: row -->
+            </div>
+            <!-- End: image grid -->
+          </div>
+        </div>
+        <!-- End; Left column -->
+        <!-- Center content column -->
+        <% var postData; %>
+    <% var commentData; %>
+    <% (typeof postData != "undefined" ? postData : "") %>
+    <% (typeof commentData != "undefined" ? commentData : "") %>
+        <%- include('tweet'); -%>
+        <!-- End: Center content column -->
+        <div class="col right-col">
+          <div class="content-panel">
+            <div class="panel-header">
+              <h4>Who to follow</h4>
+              <small><a href="">Refresh</a></small>
+              <form method="get" class="register-form" id="login-form">
+                <small><a     href="/people">View all</a></small>
+               
+            </form>
+            </div>
+            <!-- Who to Follow panel -->
+            <div class="panel-content">
+              <!--Follow list -->
+              
+              <ol class="tweet-list">
+                <% var people; %>
+                <% (typeof people != "undefined" ? people : "") %>
+                
+                <% for (var key in people) {%>
+
+                <li class="tweet-card">
+                  <div class="tweet-content">
+                    <img class="tweet-card-avatar"
+                      src="https://source.unsplash.com/user/erondu" alt="">
+                    <div class="tweet-header">
+                      <span class="fullname">
+                        <strong> <%= people[key].name %></strong>
+                      </span>
+                      <span class="username">@<%= people[key].name %></span>
+                    </div>
+                    <form method="post" class="register-form" id="login-form">
+                      <!-- <a formaction="/people/<%= people[key].id %>" type="submit" class="btn btn-follow" >Follow</a> -->
+                      <input formaction="/people/<%= people[key].id %>" type="submit" name="signin" class="btn btn-follow" value="Follow"/>
+                     
+                  </form>
+                  </div>
+                </li>
+                <% } %>
+              </ol>
+              <!--END: Follow list -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src='https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js'></script>
+     
+    
+    
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
